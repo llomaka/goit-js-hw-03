@@ -36,7 +36,7 @@ const account = {
     let generateId = this.transactions.length;
     const newTransaction = { id: generateId, type, amount };
     this.transactions.push(newTransaction);
-    if (type == Transaction.DEPOSIT) { this.balance += amount; }
+    if (type == transactionType.DEPOSIT) { this.balance += amount; }
     else { this.balance -= amount; }
   },
 
@@ -47,7 +47,7 @@ const account = {
      * после чего добавляет его в историю транзакций
      */
   deposit(amount) {
-    this.createTransaction(amount, Transaction.DEPOSIT);
+    this.createTransaction(amount, transactionType.DEPOSIT);
   },
 
     /*
@@ -61,7 +61,7 @@ const account = {
      */
   withdraw(amount) {
     if (amount > this.balance) { alert(`Снятие ${amount} невозможно. Не достаточно средств.`); return;}
-    this.createTransaction(amount, Transaction.WITHDRAW);
+    this.createTransaction(amount, transactionType.WITHDRAW);
   },
 
     /*
